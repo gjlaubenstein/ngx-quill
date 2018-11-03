@@ -137,7 +137,7 @@ export class QuillEditorComponent
   @Input()
   valueSetter = (quillEditor: any, value: any, format: 'object' | 'html' | 'json'): any => {
     if (this.format === 'html') {
-      return quillEditor.clipboard.convert(value);
+      return quillEditor.clipboard.dangerouslyPasteHTML(value, 'api');
     } else if (this.format === 'json') {
       try {
         return JSON.parse(value);
